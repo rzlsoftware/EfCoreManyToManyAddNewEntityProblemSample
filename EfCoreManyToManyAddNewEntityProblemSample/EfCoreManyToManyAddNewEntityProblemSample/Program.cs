@@ -33,7 +33,7 @@ namespace EfCoreManyToManyAddNewEntityProblemSample
 
         private static void Problem()
         {
-            using (var context = new SampleDbContext(useLogging: true))
+            using (var context = new SampleDbContext(useLogging: false))
             {
                 var teacher = context.Teachers.FirstOrDefault();
 
