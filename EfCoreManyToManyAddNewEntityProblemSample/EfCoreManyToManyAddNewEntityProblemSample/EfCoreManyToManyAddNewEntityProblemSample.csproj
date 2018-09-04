@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E72D277C-F566-4BC4-86DC-BA2632D49F3A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ManyToManyAddNewEntityProblemSample</RootNamespace>
-    <AssemblyName>ManyToManyAddNewEntityProblemSample</AssemblyName>
+    <RootNamespace>EfCoreManyToManyAddNewEntityProblemSample</RootNamespace>
+    <AssemblyName>EfCoreManyToManyAddNewEntityProblemSample</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
