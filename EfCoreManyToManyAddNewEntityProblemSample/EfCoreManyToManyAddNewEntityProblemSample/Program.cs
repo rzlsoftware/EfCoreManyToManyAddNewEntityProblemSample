@@ -37,19 +37,19 @@ namespace EfCoreManyToManyAddNewEntityProblemSample
             {
                 var teacher = context.Teachers.FirstOrDefault();
 
-                // 1.
+                // Step 1.
                 var connections = context.Teacher_Students.ToList();
-                // 2.
+                // Step 2.
                 var student = context.CreateAddedEntity<Student>();
 
                 student.Name = "Alex";
                 var ts = context.CreateAddedEntity<Teacher_Student>();
                 ts.Teacher = teacher;
-                // 3.
+                // Step 3.
                 ts.TeacherId = teacher.Id;
 
                 ts.Student = student;
-                // 4.
+                // Step 4.
                 ts.StudentId = student.Id;
 
                 WriteLine();
