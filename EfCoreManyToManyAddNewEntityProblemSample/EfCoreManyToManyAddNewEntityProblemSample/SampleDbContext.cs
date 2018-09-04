@@ -1,11 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EfCoreManyToManyAddNewEntityProblemSample
 {
     public class SampleDbContext : DbContext
     {
+        private readonly bool useLogging;
+
+        public SampleDbContext(bool useLogging = false)
+            => this.useLogging = useLogging;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Server=.;Database=ReproEfCoreManyToManyAddNewEntityProblemSample;Integrated Security=True");
+        {
+            optionsBuilder.UseSqlServer("Server=.;Database=ReproEfCoreManyToManyAddNewEntityProblemSample;Integrated Security=True");
+
+            if (useLogging)
+                optionsBuilder.UseConsoleLogging();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,5 +35,17 @@ namespace EfCoreManyToManyAddNewEntityProblemSample
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher_Student> Teacher_Students { get; set; }
+    }
+
+    public static partial class Extensions
+    {
+        public static DbContextOptionsBuilder UseConsoleLogging(this DbContextOptionsBuilder @this)
+        {
+            var loggerFactory = new LoggerFactory();
+            loggerFactory.AddProvider(new LoggerProvider());
+            @this.UseLoggerFactory(loggerFactory);
+
+            return @this;
+        }
     }
 }

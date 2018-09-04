@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using static System.Console;
 
 namespace EfCoreManyToManyAddNewEntityProblemSample
 {
@@ -26,26 +27,32 @@ namespace EfCoreManyToManyAddNewEntityProblemSample
             }
 
             Problem();
-            Console.WriteLine("Ready");
-            Console.ReadKey();
+            WriteLine("Ready");
+            ReadKey();
         }
 
         private static void Problem()
         {
-            using (var context = new SampleDbContext())
+            using (var context = new SampleDbContext(useLogging: true))
             {
                 var teacher = context.Teachers.FirstOrDefault();
 
+                // 1.
                 var connections = context.Teacher_Students.ToList();
+                // 2.
                 var student = context.CreateAddedEntity<Student>();
 
                 student.Name = "Alex";
                 var ts = context.CreateAddedEntity<Teacher_Student>();
                 ts.Teacher = teacher;
+                // 3.
                 ts.TeacherId = teacher.Id;
+
                 ts.Student = student;
+                // 4.
                 ts.StudentId = student.Id;
 
+                WriteLine();
                 context.SaveChanges();
             }
         }
