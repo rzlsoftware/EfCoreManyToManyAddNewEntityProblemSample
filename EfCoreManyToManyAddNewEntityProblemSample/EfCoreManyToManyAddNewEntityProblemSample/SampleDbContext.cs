@@ -12,7 +12,7 @@ namespace EfCoreManyToManyAddNewEntityProblemSample
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=ReproEfCoreManyToManyAddNewEntityProblemSample;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Server=.;Database=Repro13205_EfCoreManyToManyAddNewEntityProblemSample;Integrated Security=True");
 
             if (useLogging)
                 optionsBuilder.UseConsoleLogging();
