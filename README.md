@@ -1,6 +1,6 @@
 # EfCoreManyToManyAddNewEntityProblemSample
 
-Sample Project for [EF Core Issue 0000]().
+Sample Project for [EF Core Issue 13205](https://github.com/aspnet/EntityFrameworkCore/issues/13205).
 When adding a new `entity` to a M/N connection in a special order [EF Core](https://github.com/aspnet/EntityFrameworkCore) throws `DbUpdateException` with message `The INSERT statement conflicted with the FOREIGN KEY constraint...`
 
 ```csharp
